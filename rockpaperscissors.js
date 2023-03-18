@@ -1,12 +1,12 @@
-function getComputerChoice (choices) {
-    return choices[Math.floor(Math.random() * choices.length)];
+function getComputerChoice () {
+    let choices = ['Rock', 'Paper', 'Scissors'];
+    let computerChoice = choices.at(Math.floor(Math.random() * choices.length));
+    return computerChoice;
 }
-const choices = ['Rock', 'Paper', 'Scissors'];
-console.log(getComputerChoice(choices));
-
-function playRound(playerSelection, computerSelection) {
-
+function getPlayerChoice() {
+    let playerInput = prompt("Do you choose Rock, Paper, or Scissors?");
+    let result = playerInput.toLowerCase();
+    return result;
 }
-const playerSelection = 'Rock';
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+console.log()
