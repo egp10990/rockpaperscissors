@@ -9,8 +9,10 @@ function getComputerChoice() {
         return "Scissors"
     }
 }
-let playerSelection = prompt("Rock, paper, or scissors?");
-let computerSelection = getComputerChoice();
+
+let playerSelection1 = prompt("Rock, paper, or scissors?");
+let computerSelection = getComputerChoice().toLowerCase();
+let playerSelection = playerSelection1.toLowerCase();
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -31,4 +33,6 @@ function playRound(playerSelection, computerSelection) {
 }
 
 console.log("The computer chose: " + computerSelection);
+console.log("You chose: " + playerSelection);
+console.log(playRound(playerSelection, computerSelection));
 
