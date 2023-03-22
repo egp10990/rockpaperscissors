@@ -19,8 +19,6 @@ let playerSelection = playerSelection1.toLowerCase();
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        computerScore++ && 
-        playerScore++;
         return "You tied.";
     } else if (playerSelection === "rock" && computerSelection === "paper") {
         computerScore++;
@@ -40,24 +38,29 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
         playerScore++;
         return "You win. Scissors cuts Paper."
+    } else {
+        return alert("Error. Please make sure you are spelling correctly!")
     }
 }
 
 console.log("The computer chose: " + computerSelection);
 console.log("You chose: " + playerSelection);
 console.log(playRound(playerSelection, computerSelection));
+console.log(playerScore, computerScore);
 
 function game() {
     for (let i = 0; i < 5; i++) {
         var playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
         var computerSelection = getComputerChoice().toLowerCase();
-        playRound(playerSelection, computerSelection);
         console.log("The computer chose: "+ computerSelection);
         console.log("You chose: " + playerSelection);
         console.log(playRound(playerSelection, computerSelection));
+        console.log(playerScore, computerScore);
     }
-    console.log("Final computer score: " + computerScore);
+    console.log("Final computer score: "+ computerScore);
     console.log("Final player score:  " + playerScore);
 }
+
+
 
 game();
