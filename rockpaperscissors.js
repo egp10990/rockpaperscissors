@@ -13,9 +13,20 @@ function getComputerChoice() {
     }
 }
 
-let playerSelection1 = prompt("Rock, paper, or scissors?");
-let computerSelection = getComputerChoice().toLowerCase();
-let playerSelection = playerSelection1.toLowerCase();
+var rockButton = document.createElement ('button');
+rockButton.id = 'Rock';
+rockButton.innerHTML = 'Rock';
+document.body.appendChild(rockButton);
+
+var paperButton = document.createElement ('button');
+paperButton.id = 'Paper';
+paperButton.innerHTML = 'Paper';
+document.body.appendChild(paperButton);
+
+var scissorsButton = document.createElement ('button');
+scissorsButton.id = 'Scissors';
+scissorsButton.innerHTML = 'Scissors';
+document.body.appendChild(scissorsButton);
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -48,19 +59,3 @@ console.log("You chose: " + playerSelection);
 console.log(playRound(playerSelection, computerSelection));
 console.log(playerScore, computerScore);
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        var playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
-        var computerSelection = getComputerChoice().toLowerCase();
-        console.log("The computer chose: "+ computerSelection);
-        console.log("You chose: " + playerSelection);
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(playerScore, computerScore);
-    }
-    console.log("Final computer score: "+ computerScore);
-    console.log("Final player score:  " + playerScore);
-}
-
-
-
-game();
