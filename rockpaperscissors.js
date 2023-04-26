@@ -1,5 +1,32 @@
 let playerScore = 0;
 let computerScore = 0;
+let playerSelection = getPlayerChoice();
+
+var rockButton = document.createElement ('button');
+rockButton.id = 'Rock';
+rockButton.innerHTML = 'Rock';
+document.body.appendChild(rockButton);
+document.getElementById("Rock").onclick = getPlayerChoice;
+
+
+var paperButton = document.createElement ('button');
+paperButton.id = 'Paper';
+paperButton.innerHTML = 'Paper';
+document.body.appendChild(paperButton);
+document.getElementById("Paper").onclick = getPlayerChoice; 
+
+
+var scissorsButton = document.createElement ('button');
+scissorsButton.id = 'Scissors';
+scissorsButton.innerHTML = 'Scissors';
+document.body.appendChild(scissorsButton);
+document.getElementById("Scissors").onclick = getPlayerChoice;
+
+function getPlayerChoice() {
+    var playerSelection = this.id;
+    console.log("You chose: " + playerSelection);
+}
+
 
 function getComputerChoice() {
     let computerChoices = ["Rock", "Paper", "Scissors"]
@@ -13,49 +40,34 @@ function getComputerChoice() {
     }
 }
 
-var rockButton = document.createElement ('button');
-rockButton.id = 'Rock';
-rockButton.innerHTML = 'Rock';
-document.body.appendChild(rockButton);
-
-var paperButton = document.createElement ('button');
-paperButton.id = 'Paper';
-paperButton.innerHTML = 'Paper';
-document.body.appendChild(paperButton);
-
-var scissorsButton = document.createElement ('button');
-scissorsButton.id = 'Scissors';
-scissorsButton.innerHTML = 'Scissors';
-document.body.appendChild(scissorsButton);
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "You tied.";
-    } else if (playerSelection === "rock" && computerSelection === "paper") {
+    } else if (playerSelection === "Rock" && computerSelection === "Paper") {
         computerScore++;
         return "You lose. Paper covers Rock.";
-    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+    } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
         playerScore++;
         return "You win. Rock crushes Scissors."
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
+    } else if (playerSelection === "Paper" && computerSelection === "Rock") {
         playerScore++;
         return "You win. Paper covers Rock."
-    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+    } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
         computerScore++;
         return "You lose. Scissors cuts Paper."
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
         computerScore++;
         return "You lose. Rock crushes Scissors."
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
         playerScore++;
         return "You win. Scissors cuts Paper."
     } else {
-        return alert("Error. Please make sure you are spelling correctly!")
+        return "Error. Please make sure you are spelling correctly!"
     }
 }
 
-console.log("The computer chose: " + computerSelection);
-console.log("You chose: " + playerSelection);
-console.log(playRound(playerSelection, computerSelection));
+let computerSelection = getComputerChoice();
+
 console.log(playerScore, computerScore);
+
 
