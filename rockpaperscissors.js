@@ -1,31 +1,28 @@
+const choices = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
-let playerSelection = getPlayerChoice();
+let rock = document.getElementById('rock');
+let paper= document.getElementById('paper');
+let scissors= document.getElementById('scissors');
 
 var rockButton = document.createElement ('button');
-rockButton.id = 'Rock';
+rockButton.id = 'rock';
 rockButton.innerHTML = 'Rock';
 document.body.appendChild(rockButton);
-document.getElementById("Rock").onclick = getPlayerChoice;
+
 
 
 var paperButton = document.createElement ('button');
-paperButton.id = 'Paper';
+paperButton.id = 'paper';
 paperButton.innerHTML = 'Paper';
 document.body.appendChild(paperButton);
-document.getElementById("Paper").onclick = getPlayerChoice; 
 
 
 var scissorsButton = document.createElement ('button');
-scissorsButton.id = 'Scissors';
+scissorsButton.id = 'scissors';
 scissorsButton.innerHTML = 'Scissors';
 document.body.appendChild(scissorsButton);
-document.getElementById("Scissors").onclick = getPlayerChoice;
 
-function getPlayerChoice() {
-    var playerSelection = this.id;
-    console.log("You chose: " + playerSelection);
-}
 
 
 function getComputerChoice() {
@@ -40,34 +37,54 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        return "You tied.";
-    } else if (playerSelection === "Rock" && computerSelection === "Paper") {
+rockButton.addEventListener('click', ()=>{
+    if(computerScore <5 && playerScore<5){
+    compSelection= getComputerChoice();
+    if(compSelection=='Rock'){
+        alert('You tied!');
+    }else if(compSelection=='Paper'){
+        alert('You Lose! Paper covers rock!');
         computerScore++;
-        return "You lose. Paper covers Rock.";
-    } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+    }else if(compSelection=='Scissors'){
+        alert('You win! Rock crushes scissors!');
         playerScore++;
-        return "You win. Rock crushes Scissors."
-    } else if (playerSelection === "Paper" && computerSelection === "Rock") {
-        playerScore++;
-        return "You win. Paper covers Rock."
-    } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+    }else if(computerScore==5){alert('Game Over! Computer is the winner!');}
+        else{
+            alert("You won!");
+    }}
+})
+paperButton.addEventListener('click', ()=>{
+    if(computerScore <5 && playerScore<5){
+    compSelection= getComputerChoice();
+    if(compSelection=='Paper'){
+        alert('You tied!');
+    }else if(compSelection=='Scissors'){
+        alert('You Lose! Scissors cuts paper!');
         computerScore++;
-        return "You lose. Scissors cuts Paper."
-    } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-        computerScore++;
-        return "You lose. Rock crushes Scissors."
-    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+    }else if(compSelection=='Rock'){
+        alert('You win! Paper covers rock!');
         playerScore++;
-        return "You win. Scissors cuts Paper."
-    } else {
-        return "Error. Please make sure you are spelling correctly!"
+    }}else if(computerScore==5){alert('Game Over! Computer is the winner!');
+    }else{
+            alert("You won!");
+        }
+})
+scissorsButton.addEventListener('click', ()=>{
+    if(computerScore <5 && playerScore<5){
+        compSelection= getComputerChoice();
+    if(compSelection=='Scissors'){
+        alert('You tied.');
+    }else if(compSelection=='Rock'){
+        alert('You Lose! Rock crushes scissors!');
+        computerScore++;
+    }else if(compSelection=='Paper'){
+        alert('You win! Scissors cut paper!');
+        playerScore++;
+
+    }}else if(computerScore==5){alert('Game Over! Computer is the winner!');
+        }else{
+            alert("You won!");
     }
-}
+})
 
-let computerSelection = getComputerChoice();
-
-console.log(playerScore, computerScore);
-
-
+console.log (computerScore, playerScore);
