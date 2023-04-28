@@ -23,6 +23,15 @@ scissorsButton.id = 'scissors';
 scissorsButton.innerHTML = 'Scissors';
 document.body.appendChild(scissorsButton);
 
+var scoreCounter = document.createElement ('div');
+scoreCounter.id = 'score';
+document.body.appendChild(scoreCounter);
+
+var winOrLose = document.createElement ('div');
+winOrLose.id = 'win or lose';
+document.body.appendChild(winOrLose);
+document.getElementById('win or lose').innerHTML = (`Player Score: ${playerScore} Computer Score: ${computerScore}`);
+
 
 
 function getComputerChoice() {
@@ -41,50 +50,50 @@ rockButton.addEventListener('click', ()=>{
     if(computerScore <5 && playerScore<5){
     compSelection= getComputerChoice();
     if(compSelection=='Rock'){
-        alert('You tied!');
+        return winOrLose.textContent = "You tied.";
     }else if(compSelection=='Paper'){
-        alert('You Lose! Paper covers rock!');
         computerScore++;
+        return winOrLose.textContent = 'You Lose! Paper covers rock!';
     }else if(compSelection=='Scissors'){
-        alert('You win! Rock crushes scissors!');
         playerScore++;
-    }else if(computerScore==5){alert('Game Over! Computer is the winner!');}
-        else{
-            alert("You won!");
-    }}
+        return winOrLose.textContent = 'You win! Rock crushes scissors!';
+    }else if(computerScore==5){return winOrLose.textContent ='Game Over! Computer is the winner!';
+    }else {
+            return winOrLose.textContent = "You won the game!";
+        }
+    }
 })
+
 paperButton.addEventListener('click', ()=>{
     if(computerScore <5 && playerScore<5){
     compSelection= getComputerChoice();
     if(compSelection=='Paper'){
-        alert('You tied!');
+        return winOrLose.textContent = 'You tied!';
     }else if(compSelection=='Scissors'){
-        alert('You Lose! Scissors cuts paper!');
         computerScore++;
+        return winOrLose.textContent = 'You Lose! Scissors cuts paper!';
     }else if(compSelection=='Rock'){
-        alert('You win! Paper covers rock!');
         playerScore++;
-    }}else if(computerScore==5){alert('Game Over! Computer is the winner!');
+        return winOrLose.textContent = 'You win! Paper covers rock!';
+    }}else if(computerScore==5){return winOrLose.textContent = 'Game Over! Computer is the winner!';
     }else{
-            alert("You won!");
+        return winOrLose.textContent = "You won the game!";
         }
 })
 scissorsButton.addEventListener('click', ()=>{
     if(computerScore <5 && playerScore<5){
         compSelection= getComputerChoice();
     if(compSelection=='Scissors'){
-        alert('You tied.');
+        return winOrLose.textContent ='You tied.';
     }else if(compSelection=='Rock'){
-        alert('You Lose! Rock crushes scissors!');
         computerScore++;
+        return winOrLose.textContent ='You Lose! Rock crushes scissors!';
     }else if(compSelection=='Paper'){
-        alert('You win! Scissors cut paper!');
         playerScore++;
-
-    }}else if(computerScore==5){alert('Game Over! Computer is the winner!');
+        return winOrLose.textContent ='You win! Scissors cut paper!';
+    }}else if(computerScore==5){return winOrLose.textContent ='Game Over! Computer is the winner!';
         }else{
-            alert("You won!");
+            return winOrLose.textContent ="You won the game!";
     }
 })
 
-console.log (computerScore, playerScore);
